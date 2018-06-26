@@ -1,0 +1,104 @@
+﻿@model VaktiImProject.Models.GATIM
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>GATIM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.emriGatimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.emriGatimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pershkrimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pershkrimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cmimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.disponueshmeria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.disponueshmeria)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datakrijimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datakrijimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datamodifikimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datamodifikimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERDORUE.emri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERDORUE.emri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERDORUE1.emri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERDORUE1.emri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KATEGORI.emri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KATEGORI.emri)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

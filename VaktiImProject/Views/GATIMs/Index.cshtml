@@ -1,0 +1,87 @@
+﻿@model IEnumerable<VaktiImProject.Models.GATIM>
+
+@{
+    ViewBag.Title = "Gatimet";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Add", "Add")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.emriGatimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pershkrimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cmimi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.disponueshmeria)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datakrijimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datamodifikimit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERDORUE.emri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERDORUE1.emri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KATEGORI.emri)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.emriGatimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pershkrimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cmimi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disponueshmeria)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datakrijimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datamodifikimit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERDORUE.emri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PERDORUE1.emri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KATEGORI.emri)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.gatim_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.gatim_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.gatim_id })
+        </td>
+    </tr>
+}
+
+</table>

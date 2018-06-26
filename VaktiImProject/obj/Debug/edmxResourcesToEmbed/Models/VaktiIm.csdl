@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Vakti_ImModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADRESA">
+    <Key>
+      <PropertyRef Name="adrese_id" />
+    </Key>
+    <Property Name="adrese_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rruga" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="pershkrimi" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="POROSIs" Relationship="Self.POROSI_fk0" FromRole="ADRESA" ToRole="POROSI" />
+  </EntityType>
+  <EntityType Name="KATEGORI">
+    <Key>
+      <PropertyRef Name="kategori_id" />
+    </Key>
+    <Property Name="kategori_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emri" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="GATIMs" Relationship="Vakti_ImModel.GATIM_fk2" FromRole="KATEGORI" ToRole="GATIM" />
+  </EntityType>
+  <EntityType Name="LOG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MODIFY_DATE" Type="DateTime" Precision="3" />
+    <Property Name="CREATED_BY" Type="Int32" Nullable="false" />
+    <Property Name="MODIFICATED_BY" Type="Int32" />
+    <NavigationProperty Name="PERDORUE" Relationship="Self.FK_LOG" FromRole="LOGS" ToRole="PERDORUES" />
+    <NavigationProperty Name="PERDORUE1" Relationship="Self.FK_LOG_MODIFIKO" FromRole="LOGS" ToRole="PERDORUES" />
+  </EntityType>
+  <EntityType Name="PERDORUE">
+    <Key>
+      <PropertyRef Name="perdorues_id" />
+    </Key>
+    <Property Name="perdorues_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mbiemri" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="aktiv" Type="Boolean" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="krijimPerdorues" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modifikimPerdoruesi" Type="DateTime" Precision="3" />
+    <Property Name="rol_id" Type="Int32" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="LOGS" Relationship="Self.FK_LOG" FromRole="PERDORUES" ToRole="LOGS" />
+    <NavigationProperty Name="LOGS1" Relationship="Self.FK_LOG_MODIFIKO" FromRole="PERDORUES" ToRole="LOGS" />
+    <NavigationProperty Name="ROLI" Relationship="Self.PERDORUES_fk3" FromRole="PERDORUES" ToRole="ROLI" />
+    <NavigationProperty Name="POROSIs" Relationship="Self.POROSI_fk1" FromRole="PERDORUES" ToRole="POROSI" />
+    <NavigationProperty Name="POROSIs1" Relationship="Self.POROSI_fk2" FromRole="PERDORUES" ToRole="POROSI" />
+    <NavigationProperty Name="GATIMs" Relationship="Vakti_ImModel.GATIM_fk0" FromRole="PERDORUE" ToRole="GATIM" />
+    <NavigationProperty Name="GATIMs1" Relationship="Vakti_ImModel.GATIM_fk1" FromRole="PERDORUE" ToRole="GATIM" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="POROSI">
+    <Key>
+      <PropertyRef Name="porosi_id" />
+    </Key>
+    <Property Name="porosi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="adresa_id" Type="Int32" Nullable="false" />
+    <Property Name="datetime_Porosi" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="status_porosie" Type="Boolean" Nullable="false" />
+    <Property Name="klient_id" Type="Int32" Nullable="false" />
+    <Property Name="pergjegjes_id" Type="Int32" Nullable="false" />
+    <Property Name="data_Modifikimit" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ADRESA" Relationship="Self.POROSI_fk0" FromRole="POROSI" ToRole="ADRESA" />
+    <NavigationProperty Name="PERDORUE" Relationship="Self.POROSI_fk1" FromRole="POROSI" ToRole="PERDORUES" />
+    <NavigationProperty Name="PERDORUE1" Relationship="Self.POROSI_fk2" FromRole="POROSI" ToRole="PERDORUES" />
+    <NavigationProperty Name="POROSI_ITEM" Relationship="Self.POROSI_ITEM_fk0" FromRole="POROSI" ToRole="POROSI_ITEM" />
+  </EntityType>
+  <EntityType Name="POROSI_ITEM">
+    <Key>
+      <PropertyRef Name="porosi_id" />
+      <PropertyRef Name="gatim_id" />
+    </Key>
+    <Property Name="porosi_id" Type="Int32" Nullable="false" />
+    <Property Name="sasia" Type="Int32" Nullable="false" />
+    <Property Name="gatim_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="POROSI" Relationship="Self.POROSI_ITEM_fk0" FromRole="POROSI_ITEM" ToRole="POROSI" />
+    <NavigationProperty Name="GATIM" Relationship="Vakti_ImModel.POROSI_ITEM_fk1" FromRole="POROSI_ITEM" ToRole="GATIM" />
+  </EntityType>
+  <EntityType Name="ROLI">
+    <Key>
+      <PropertyRef Name="rol_id" />
+    </Key>
+    <Property Name="rol_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emri" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="PERDORUES" Relationship="Self.PERDORUES_fk3" FromRole="ROLI" ToRole="PERDORUES" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="POROSI_fk0">
+    <End Role="ADRESA" Type="Self.ADRESA" Multiplicity="1" />
+    <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ADRESA">
+        <PropertyRef Name="adrese_id" />
+      </Principal>
+      <Dependent Role="POROSI">
+        <PropertyRef Name="adresa_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG">
+    <End Role="PERDORUES" Type="Self.PERDORUE" Multiplicity="1" />
+    <End Role="LOGS" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUES">
+        <PropertyRef Name="perdorues_id" />
+      </Principal>
+      <Dependent Role="LOGS">
+        <PropertyRef Name="CREATED_BY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LOG_MODIFIKO">
+    <End Role="PERDORUES" Type="Self.PERDORUE" Multiplicity="0..1" />
+    <End Role="LOGS" Type="Self.LOG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUES">
+        <PropertyRef Name="perdorues_id" />
+      </Principal>
+      <Dependent Role="LOGS">
+        <PropertyRef Name="MODIFICATED_BY" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PERDORUES_fk3">
+    <End Role="ROLI" Type="Self.ROLI" Multiplicity="1" />
+    <End Role="PERDORUES" Type="Self.PERDORUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROLI">
+        <PropertyRef Name="rol_id" />
+      </Principal>
+      <Dependent Role="PERDORUES">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="POROSI_fk1">
+    <End Role="PERDORUES" Type="Self.PERDORUE" Multiplicity="1" />
+    <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUES">
+        <PropertyRef Name="perdorues_id" />
+      </Principal>
+      <Dependent Role="POROSI">
+        <PropertyRef Name="klient_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="POROSI_fk2">
+    <End Role="PERDORUES" Type="Self.PERDORUE" Multiplicity="1" />
+    <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUES">
+        <PropertyRef Name="perdorues_id" />
+      </Principal>
+      <Dependent Role="POROSI">
+        <PropertyRef Name="pergjegjes_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="POROSI_ITEM_fk0">
+    <End Role="POROSI" Type="Self.POROSI" Multiplicity="1" />
+    <End Role="POROSI_ITEM" Type="Self.POROSI_ITEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="POROSI">
+        <PropertyRef Name="porosi_id" />
+      </Principal>
+      <Dependent Role="POROSI_ITEM">
+        <PropertyRef Name="porosi_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Vakti_ImEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADRESAs" EntityType="Self.ADRESA" />
+    <EntitySet Name="KATEGORIs" EntityType="Self.KATEGORI" />
+    <EntitySet Name="LOGS" EntityType="Self.LOG" />
+    <EntitySet Name="PERDORUES" EntityType="Self.PERDORUE" />
+    <EntitySet Name="POROSIs" EntityType="Self.POROSI" />
+    <EntitySet Name="POROSI_ITEM" EntityType="Self.POROSI_ITEM" />
+    <EntitySet Name="ROLIs" EntityType="Self.ROLI" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <AssociationSet Name="POROSI_fk0" Association="Self.POROSI_fk0">
+      <End Role="ADRESA" EntitySet="ADRESAs" />
+      <End Role="POROSI" EntitySet="POROSIs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG" Association="Self.FK_LOG">
+      <End Role="PERDORUES" EntitySet="PERDORUES" />
+      <End Role="LOGS" EntitySet="LOGS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LOG_MODIFIKO" Association="Self.FK_LOG_MODIFIKO">
+      <End Role="PERDORUES" EntitySet="PERDORUES" />
+      <End Role="LOGS" EntitySet="LOGS" />
+    </AssociationSet>
+    <AssociationSet Name="PERDORUES_fk3" Association="Self.PERDORUES_fk3">
+      <End Role="ROLI" EntitySet="ROLIs" />
+      <End Role="PERDORUES" EntitySet="PERDORUES" />
+    </AssociationSet>
+    <AssociationSet Name="POROSI_fk1" Association="Self.POROSI_fk1">
+      <End Role="PERDORUES" EntitySet="PERDORUES" />
+      <End Role="POROSI" EntitySet="POROSIs" />
+    </AssociationSet>
+    <AssociationSet Name="POROSI_fk2" Association="Self.POROSI_fk2">
+      <End Role="PERDORUES" EntitySet="PERDORUES" />
+      <End Role="POROSI" EntitySet="POROSIs" />
+    </AssociationSet>
+    <AssociationSet Name="POROSI_ITEM_fk0" Association="Self.POROSI_ITEM_fk0">
+      <End Role="POROSI" EntitySet="POROSIs" />
+      <End Role="POROSI_ITEM" EntitySet="POROSI_ITEM" />
+    </AssociationSet>
+    <FunctionImport Name="GatimeAktive" ReturnType="Collection(Vakti_ImModel.GatimeAktive_Result)" />
+    <FunctionImport Name="Porosit_e_bera" ReturnType="Collection(Vakti_ImModel.Porosit_e_bera_Result)">
+      <Parameter Name="id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Procedure1" ReturnType="Collection(Vakti_ImModel.Procedure1_Result)" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Vakti_ImModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Vakti_ImModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <EntitySet Name="C__RefactorLog" EntityType="Vakti_ImModel.C__RefactorLog" />
+    <EntitySet Name="GATIMs" EntityType="Vakti_ImModel.GATIM" />
+    <AssociationSet Name="GATIM_fk0" Association="Vakti_ImModel.GATIM_fk0">
+      <End Role="PERDORUE" EntitySet="PERDORUES" />
+      <End Role="GATIM" EntitySet="GATIMs" />
+    </AssociationSet>
+    <AssociationSet Name="GATIM_fk1" Association="Vakti_ImModel.GATIM_fk1">
+      <End Role="PERDORUE" EntitySet="PERDORUES" />
+      <End Role="GATIM" EntitySet="GATIMs" />
+    </AssociationSet>
+    <AssociationSet Name="GATIM_fk2" Association="Vakti_ImModel.GATIM_fk2">
+      <End Role="KATEGORI" EntitySet="KATEGORIs" />
+      <End Role="GATIM" EntitySet="GATIMs" />
+    </AssociationSet>
+    <AssociationSet Name="POROSI_ITEM_fk1" Association="Vakti_ImModel.POROSI_ITEM_fk1">
+      <End Role="GATIM" EntitySet="GATIMs" />
+      <End Role="POROSI_ITEM" EntitySet="POROSI_ITEM" />
+    </AssociationSet>
+    <FunctionImport Name="ShfaqPorosi1" EntitySet="POROSIs" ReturnType="Collection(Vakti_ImModel.POROSI)" />
+    <FunctionImport Name="ShfaqPorosit0" EntitySet="POROSIs" ReturnType="Collection(Vakti_ImModel.POROSI)" />
+  </EntityContainer>
+  <ComplexType Name="GatimeAktive_Result">
+    <Property Type="Int32" Name="gatim_id" Nullable="false" />
+    <Property Type="String" Name="emri" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="pershkrimi" Nullable="false" MaxLength="Max" />
+    <Property Type="Decimal" Name="cmimi" Nullable="false" Precision="19" />
+    <Property Type="Boolean" Name="disponueshmeria" Nullable="false" />
+    <Property Type="String" Name="foto" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="datakrijimit" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="datamodifikimit" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="createdBy" Nullable="false" />
+    <Property Type="Int32" Name="modifiedBy" Nullable="true" />
+    <Property Type="Int32" Name="kategori_id" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="Porosit_e_bera_Result">
+    <Property Type="String" Name="emri" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="sasia" Nullable="false" />
+    <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+    <Property Type="String" Name="pershkrimi" Nullable="true" MaxLength="150" />
+    <Property Type="String" Name="emriGatimit" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="emriKlientit" Nullable="false" MaxLength="255" />
+  </ComplexType>
+  <ComplexType Name="Procedure1_Result">
+    <Property Type="Int32" Name="sasia" Nullable="false" />
+    <Property Type="DateTime" Name="datetime_Porosi" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="adresa_id" Nullable="false" />
+    <Property Type="Int32" Name="klient_id" Nullable="false" />
+    <Property Type="Int32" Name="pergjegjes_id" Nullable="false" />
+    <Property Type="Int32" Name="porosi_id" Nullable="false" />
+    <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+    <Property Type="String" Name="emriGatimit" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="C__RefactorLog">
+    <Key>
+      <PropertyRef Name="OperationKey" />
+    </Key>
+    <Property Name="OperationKey" Type="Guid" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GATIM">
+    <Key>
+      <PropertyRef Name="gatim_id" />
+    </Key>
+    <Property Name="gatim_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="emriGatimit" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="pershkrimi" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="cmimi" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="disponueshmeria" Type="Boolean" Nullable="false" />
+    <Property Name="foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="datakrijimit" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="datamodifikimit" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int32" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int32" />
+    <Property Name="kategori_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PERDORUE" Relationship="Vakti_ImModel.GATIM_fk0" FromRole="GATIM" ToRole="PERDORUE" />
+    <NavigationProperty Name="PERDORUE1" Relationship="Vakti_ImModel.GATIM_fk1" FromRole="GATIM" ToRole="PERDORUE" />
+    <NavigationProperty Name="KATEGORI" Relationship="Vakti_ImModel.GATIM_fk2" FromRole="GATIM" ToRole="KATEGORI" />
+    <NavigationProperty Name="POROSI_ITEM" Relationship="Vakti_ImModel.POROSI_ITEM_fk1" FromRole="GATIM" ToRole="POROSI_ITEM" />
+  </EntityType>
+  <Association Name="GATIM_fk0">
+    <End Type="Vakti_ImModel.PERDORUE" Role="PERDORUE" Multiplicity="1" />
+    <End Type="Vakti_ImModel.GATIM" Role="GATIM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUE">
+        <PropertyRef Name="perdorues_id" />
+      </Principal>
+      <Dependent Role="GATIM">
+        <PropertyRef Name="createdBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GATIM_fk1">
+    <End Type="Vakti_ImModel.PERDORUE" Role="PERDORUE" Multiplicity="0..1" />
+    <End Type="Vakti_ImModel.GATIM" Role="GATIM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERDORUE">
+        <PropertyRef Name="perdorues_id" />
+      </Principal>
+      <Dependent Role="GATIM">
+        <PropertyRef Name="modifiedBy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="GATIM_fk2">
+    <End Type="Vakti_ImModel.KATEGORI" Role="KATEGORI" Multiplicity="1" />
+    <End Type="Vakti_ImModel.GATIM" Role="GATIM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KATEGORI">
+        <PropertyRef Name="kategori_id" />
+      </Principal>
+      <Dependent Role="GATIM">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="POROSI_ITEM_fk1">
+    <End Type="Vakti_ImModel.GATIM" Role="GATIM" Multiplicity="1" />
+    <End Type="Vakti_ImModel.POROSI_ITEM" Role="POROSI_ITEM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GATIM">
+        <PropertyRef Name="gatim_id" />
+      </Principal>
+      <Dependent Role="POROSI_ITEM">
+        <PropertyRef Name="gatim_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ShfaqPorosi1_Result">
+    <Property Type="Int32" Name="porosi_id" Nullable="false" />
+    <Property Type="Int32" Name="adresa_id" Nullable="false" />
+    <Property Type="DateTime" Name="datetime_Porosi" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+    <Property Type="Int32" Name="klient_id" Nullable="false" />
+    <Property Type="Int32" Name="pergjegjes_id" Nullable="false" />
+    <Property Type="DateTime" Name="data_Modifikimit" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="ShfaqPorosit0_Result">
+    <Property Type="Int32" Name="porosi_id" Nullable="false" />
+    <Property Type="Int32" Name="adresa_id" Nullable="false" />
+    <Property Type="DateTime" Name="datetime_Porosi" Nullable="false" Precision="23" />
+    <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+    <Property Type="Int32" Name="klient_id" Nullable="false" />
+    <Property Type="Int32" Name="pergjegjes_id" Nullable="false" />
+    <Property Type="DateTime" Name="data_Modifikimit" Nullable="true" Precision="23" />
+  </ComplexType>
+</Schema>

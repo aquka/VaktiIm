@@ -1,0 +1,66 @@
+﻿@model VaktiImProject.Models.POROSI
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>POROSI</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.datetime_Porosi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datetime_Porosi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.status_porosie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status_porosie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.data_Modifikimit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.data_Modifikimit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ADRESA.rruga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ADRESA.rruga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERDORUE.emri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERDORUE.emri)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PERDORUE1.emri)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PERDORUE1.emri)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.porosi_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

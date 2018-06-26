@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Vakti_ImModelStoreContainer" CdmEntityContainer="Vakti_ImEntities">
+    <EntitySetMapping Name="ADRESAs">
+      <EntityTypeMapping TypeName="Vakti_ImModel.ADRESA">
+        <MappingFragment StoreEntitySet="ADRESA">
+          <ScalarProperty Name="adrese_id" ColumnName="adrese_id" />
+          <ScalarProperty Name="rruga" ColumnName="rruga" />
+          <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KATEGORIs">
+      <EntityTypeMapping TypeName="Vakti_ImModel.KATEGORI">
+        <MappingFragment StoreEntitySet="KATEGORI">
+          <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+          <ScalarProperty Name="emri" ColumnName="emri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOGS">
+      <EntityTypeMapping TypeName="Vakti_ImModel.LOG">
+        <MappingFragment StoreEntitySet="LOGS">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="MODIFY_DATE" ColumnName="MODIFY_DATE" />
+          <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+          <ScalarProperty Name="MODIFICATED_BY" ColumnName="MODIFICATED_BY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERDORUES">
+      <EntityTypeMapping TypeName="Vakti_ImModel.PERDORUE">
+        <MappingFragment StoreEntitySet="PERDORUES">
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="perdorues_id" ColumnName="perdorues_id" />
+          <ScalarProperty Name="emri" ColumnName="emri" />
+          <ScalarProperty Name="mbiemri" ColumnName="mbiemri" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="aktiv" ColumnName="aktiv" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="krijimPerdorues" ColumnName="krijimPerdorues" />
+          <ScalarProperty Name="modifikimPerdoruesi" ColumnName="modifikimPerdoruesi" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POROSIs">
+      <EntityTypeMapping TypeName="Vakti_ImModel.POROSI">
+        <MappingFragment StoreEntitySet="POROSI">
+          <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+          <ScalarProperty Name="adresa_id" ColumnName="adresa_id" />
+          <ScalarProperty Name="datetime_Porosi" ColumnName="datetime_Porosi" />
+          <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+          <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+          <ScalarProperty Name="pergjegjes_id" ColumnName="pergjegjes_id" />
+          <ScalarProperty Name="data_Modifikimit" ColumnName="data_Modifikimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="POROSI_ITEM">
+      <EntityTypeMapping TypeName="Vakti_ImModel.POROSI_ITEM">
+        <MappingFragment StoreEntitySet="POROSI_ITEM">
+          <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+          <ScalarProperty Name="sasia" ColumnName="sasia" />
+          <ScalarProperty Name="gatim_id" ColumnName="gatim_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROLIs">
+      <EntityTypeMapping TypeName="Vakti_ImModel.ROLI">
+        <MappingFragment StoreEntitySet="ROLI">
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="emri" ColumnName="emri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Vakti_ImModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GatimeAktive" FunctionName="Vakti_ImModel.Store.GatimeAktive">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Vakti_ImModel.GatimeAktive_Result">
+          <ScalarProperty Name="gatim_id" ColumnName="gatim_id" />
+          <ScalarProperty Name="emri" ColumnName="emri" />
+          <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+          <ScalarProperty Name="cmimi" ColumnName="cmimi" />
+          <ScalarProperty Name="disponueshmeria" ColumnName="disponueshmeria" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="datakrijimit" ColumnName="datakrijimit" />
+          <ScalarProperty Name="datamodifikimit" ColumnName="datamodifikimit" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Porosit_e_bera" FunctionName="Vakti_ImModel.Store.Porosit_e_bera">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Vakti_ImModel.Porosit_e_bera_Result">
+          <ScalarProperty Name="emri" ColumnName="emri" />
+          <ScalarProperty Name="sasia" ColumnName="sasia" />
+          <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+          <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+          <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+          <ScalarProperty Name="emriKlientit" ColumnName="emriKlientit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="Procedure1" FunctionName="Vakti_ImModel.Store.Procedure1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Vakti_ImModel.Procedure1_Result">
+          <ScalarProperty Name="sasia" ColumnName="sasia" />
+          <ScalarProperty Name="datetime_Porosi" ColumnName="datetime_Porosi" />
+          <ScalarProperty Name="adresa_id" ColumnName="adresa_id" />
+          <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+          <ScalarProperty Name="pergjegjes_id" ColumnName="pergjegjes_id" />
+          <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+          <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+          <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Vakti_ImModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Vakti_ImModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Vakti_ImModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Vakti_ImModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Vakti_ImModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Vakti_ImModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Vakti_ImModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Vakti_ImModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Vakti_ImModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="C__RefactorLog">
+      <EntityTypeMapping TypeName="Vakti_ImModel.C__RefactorLog">
+        <MappingFragment StoreEntitySet="__RefactorLog">
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GATIMs">
+      <EntityTypeMapping TypeName="Vakti_ImModel.GATIM">
+        <MappingFragment StoreEntitySet="GATIM">
+          <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="datamodifikimit" ColumnName="datamodifikimit" />
+          <ScalarProperty Name="datakrijimit" ColumnName="datakrijimit" />
+          <ScalarProperty Name="foto" ColumnName="foto" />
+          <ScalarProperty Name="disponueshmeria" ColumnName="disponueshmeria" />
+          <ScalarProperty Name="cmimi" ColumnName="cmimi" />
+          <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+          <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+          <ScalarProperty Name="gatim_id" ColumnName="gatim_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ShfaqPorosi1" FunctionName="Vakti_ImModel.Store.ShfaqPorosi1" />
+    <FunctionImportMapping FunctionImportName="ShfaqPorosit0" FunctionName="Vakti_ImModel.Store.ShfaqPorosit0" />
+  </EntityContainerMapping>
+</Mapping>
