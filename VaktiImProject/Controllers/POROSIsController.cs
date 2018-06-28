@@ -13,12 +13,12 @@ namespace VaktiImProject.Controllers
 {
     public class POROSIsController : Controller
     {
-        private Vakti_ImEntities db = new Vakti_ImEntities();
+        private Vakti_Im_Entities db = new Vakti_Im_Entities();
 
         // GET: POROSIs
         public ActionResult Index()
         {
-            var pOROSIs = db.POROSIs.Include(p => p.ADRESA).Include(p => p.PERDORUE).Include(p => p.PERDORUE1);
+            var pOROSIs = db.POROSIs.Include(p => p.ADRESA).Include(p => p.AspNetUser).Include(p => p.AspNetUser1);
             return View(pOROSIs.ToList());
         }
         public ActionResult Porosi()
@@ -66,8 +66,8 @@ namespace VaktiImProject.Controllers
         public ActionResult Create()
         {
             ViewBag.adresa_id = new SelectList(db.ADRESAs, "adrese_id", "rruga");
-            ViewBag.klient_id = new SelectList(db.PERDORUES, "perdorues_id", "emri");
-            ViewBag.pergjegjes_id = new SelectList(db.PERDORUES, "perdorues_id", "emri");
+            ViewBag.klient_id = new SelectList(db.AspNetUsers, "Id", "Email");
+            ViewBag.pergjegjes_id = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
@@ -86,8 +86,8 @@ namespace VaktiImProject.Controllers
             }
 
             ViewBag.adresa_id = new SelectList(db.ADRESAs, "adrese_id", "rruga", pOROSI.adresa_id);
-            ViewBag.klient_id = new SelectList(db.PERDORUES, "perdorues_id", "emri", pOROSI.klient_id);
-            ViewBag.pergjegjes_id = new SelectList(db.PERDORUES, "perdorues_id", "emri", pOROSI.pergjegjes_id);
+            ViewBag.klient_id = new SelectList(db.AspNetUsers, "Id", "Email", pOROSI.klient_id);
+            ViewBag.pergjegjes_id = new SelectList(db.AspNetUsers, "Id", "Email", pOROSI.pergjegjes_id);
             return View(pOROSI);
         }
 
@@ -104,8 +104,8 @@ namespace VaktiImProject.Controllers
                 return HttpNotFound();
             }
             ViewBag.adresa_id = new SelectList(db.ADRESAs, "adrese_id", "rruga", pOROSI.adresa_id);
-            ViewBag.klient_id = new SelectList(db.PERDORUES, "perdorues_id", "emri", pOROSI.klient_id);
-            ViewBag.pergjegjes_id = new SelectList(db.PERDORUES, "perdorues_id", "emri", pOROSI.pergjegjes_id);
+            ViewBag.klient_id = new SelectList(db.AspNetUsers, "Id", "Email", pOROSI.klient_id);
+            ViewBag.pergjegjes_id = new SelectList(db.AspNetUsers, "Id", "Email", pOROSI.pergjegjes_id);
             return View(pOROSI);
         }
 
@@ -123,8 +123,8 @@ namespace VaktiImProject.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.adresa_id = new SelectList(db.ADRESAs, "adrese_id", "rruga", pOROSI.adresa_id);
-            ViewBag.klient_id = new SelectList(db.PERDORUES, "perdorues_id", "emri", pOROSI.klient_id);
-            ViewBag.pergjegjes_id = new SelectList(db.PERDORUES, "perdorues_id", "emri", pOROSI.pergjegjes_id);
+            ViewBag.klient_id = new SelectList(db.AspNetUsers, "Id", "Email", pOROSI.klient_id);
+            ViewBag.pergjegjes_id = new SelectList(db.AspNetUsers, "Id", "Email", pOROSI.pergjegjes_id);
             return View(pOROSI);
         }
 

@@ -12,7 +12,7 @@ namespace VaktiImProject.Controllers
 {
     public class KATEGORIsController : Controller
     {
-        private Vakti_ImEntities db = new Vakti_ImEntities();
+        private Vakti_Im_Entities db = new Vakti_Im_Entities();
 
         // GET: KATEGORIs
         public ActionResult Index()

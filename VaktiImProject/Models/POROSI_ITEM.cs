@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace VaktiImProject.Models
         public int sasia { get; set; }
         public int gatim_id { get; set; }
     
-        public virtual POROSI POROSI { get; set; }
         public virtual GATIM GATIM { get; set; }
+        public virtual POROSI POROSI { get; set; }
     }
 }

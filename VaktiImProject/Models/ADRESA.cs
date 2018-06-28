@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     using System.Collections.Generic;

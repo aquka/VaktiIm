@@ -14,7 +14,7 @@ namespace VaktiImProject.Controllers
 {
     public class GATIMsController : Controller
     {
-        private Vakti_ImEntities db = new Vakti_ImEntities();
+        private Vakti_Im_Entities db = new Vakti_Im_Entities();
 
         //        // GET: GATIMs
         //        public ActionResult Index()
@@ -197,8 +197,8 @@ namespace VaktiImProject.Controllers
         [HttpPost]
         public ActionResult Add(GATIM gATIM)
         {
-            string filename = Path.GetFileNameWithoutExtension(gATIM.ImageFile.FileName);
-            string extension = Path.GetExtension(gATIM.ImageFile.FileName);
+            string filename = "";// Path.GetFileNameWithoutExtension(gATIM.ImageFile.FileName);
+            string extension = "";// Path.GetExtension(gATIM.ImageFile.FileName);
             filename = filename + DateTime.Now.ToString("yymmssfff") + extension;
             gATIM.foto = "~/Foto/" + filename;
             filename = Path.Combine(Server.MapPath("~/Foto/") + filename);
@@ -223,8 +223,15 @@ namespace VaktiImProject.Controllers
 
         public ActionResult Index()
         {
-            var gATIMs = db.GATIMs.Include(g => g.PERDORUE).Include(g => g.PERDORUE1).Include(g => g.KATEGORI);
-            return View(gATIMs.ToList());
+            try
+            {
+                var gATIMs = db.GATIMs.Include(g => g.AspNetUser).Include(g => g.AspNetUser1).Include(g => g.KATEGORI);
+                return View(gATIMs.ToList());
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
 
 
         }
@@ -240,7 +247,7 @@ namespace VaktiImProject.Controllers
             gATIM = db.GATIMs.Find(id);
             GATIM gt = new GATIM { foto = "data:Foto" };
 
-            gt.gatim = gATIM;
+            gt = gATIM;
 
             if (gATIM == null)
             {
@@ -260,8 +267,8 @@ namespace VaktiImProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.createdBy = new SelectList(db.PERDORUES, "perdorues_id", "emri", gATIM.createdBy);
-            ViewBag.modifiedBy = new SelectList(db.PERDORUES, "perdorues_id", "emri", gATIM.modifiedBy);
+            ViewBag.createdBy = new SelectList(db.AspNetUsers, "Id", "Email", gATIM.createdBy);
+            ViewBag.modifiedBy = new SelectList(db.AspNetUsers, "Id", "emri", gATIM.modifiedBy);
             ViewBag.kategori_id = new SelectList(db.KATEGORIs, "kategori_id", "emri", gATIM.kategori_id);
             return View(gATIM);
         }
@@ -279,8 +286,8 @@ namespace VaktiImProject.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.createdBy = new SelectList(db.PERDORUES, "perdorues_id", "emri", gATIM.createdBy);
-            ViewBag.modifiedBy = new SelectList(db.PERDORUES, "perdorues_id", "emri", gATIM.modifiedBy);
+            ViewBag.createdBy = new SelectList(db.AspNetUsers, "Id", "Email", gATIM.createdBy);
+            ViewBag.modifiedBy = new SelectList(db.AspNetUsers, "Id", "Email", gATIM.modifiedBy);
             ViewBag.kategori_id = new SelectList(db.KATEGORIs, "kategori_id", "emri", gATIM.kategori_id);
             return View(gATIM);
         }

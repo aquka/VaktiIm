@@ -7,17 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     
     public partial class Porosit_e_bera_Result
     {
-        public string emri { get; set; }
+        public string emriGatimit { get; set; }
         public int sasia { get; set; }
         public bool status_porosie { get; set; }
         public string pershkrimi { get; set; }
-        public string emriGatimit { get; set; }
-        public string emriKlientit { get; set; }
+        public string emailiKlientit { get; set; }
+        public string Email { get; set; }
     }
 }

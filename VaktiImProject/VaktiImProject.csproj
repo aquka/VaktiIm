@@ -205,11 +205,8 @@
     <Compile Include="BLL\OrdersService.cs" />
     <Compile Include="Controllers\GATIMsController.cs" />
     <Compile Include="Controllers\KATEGORIsController.cs" />
-    <Compile Include="Controllers\PERDORUEsController.cs" />
+    <Compile Include="Controllers\AspNetUsersController.cs" />
     <Compile Include="Controllers\POROSIsController.cs" />
-    <Compile Include="Models\ADRESA.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -218,80 +215,84 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Models\C__RefactorLog.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GATIM.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\GatimeAktive_Result.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\KATEGORI.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\LOG.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\PERDORUE.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
+    <Compile Include="Models\ADRESA.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Detaje_porosie_Result.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GATIM.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GatimeAktive_Result.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\KATEGORI.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\POROSI.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PorosiModel.cs" />
+    <Compile Include="Models\Porosite_e_mia_Result.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Porosit_e_bera_Result.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\POROSI_ITEM.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Procedure1_Result.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShfaqPorosi1_Result.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ShfaqPorosit0_Result.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VaktiImModel.Context.cs">
+      <DependentUpon>VaktiImModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\VaktiImModel.cs">
+      <DependentUpon>VaktiImModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\VaktiImModel.Designer.cs">
+      <DependentUpon>VaktiImModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Models\ROLI.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VaktiIm.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VaktiIm.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VaktiIm.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VaktiIm.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\VaktiIm.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>VaktiIm.edmx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-simplex.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -330,6 +331,16 @@
     <Content Include="Foto\vegjetariane_s.jpg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\VaktiImModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VaktiImModel.edmx</DependentUpon>
+      <LastGenOutput>VaktiImModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\VaktiImModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>VaktiImModel.edmx</DependentUpon>
+      <LastGenOutput>VaktiImModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -337,6 +348,13 @@
     </Content>
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\VaktiImModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>VaktiImModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\VaktiImModel.edmx.diagram">
+      <DependentUpon>VaktiImModel.edmx</DependentUpon>
     </Content>
     <None Include="NLog.xsd">
       <SubType>Designer</SubType>
@@ -354,16 +372,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Models\VaktiIm.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>VaktiIm.edmx</DependentUpon>
-      <LastGenOutput>VaktiIm.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\VaktiIm.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>VaktiIm.edmx</DependentUpon>
-      <LastGenOutput>VaktiIm.cs</LastGenOutput>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -398,13 +406,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <EntityDeploy Include="Models\VaktiIm.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>VaktiIm.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\VaktiIm.edmx.diagram">
-      <DependentUpon>VaktiIm.edmx</DependentUpon>
-    </Content>
     <Content Include="Views\PERDORUEs\Create.cshtml" />
     <Content Include="Views\PERDORUEs\Delete.cshtml" />
     <Content Include="Views\PERDORUEs\Details.cshtml" />

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     using System.Collections.Generic;
@@ -24,13 +24,13 @@ namespace VaktiImProject.Models
         public int adresa_id { get; set; }
         public System.DateTime datetime_Porosi { get; set; }
         public bool status_porosie { get; set; }
-        public int klient_id { get; set; }
-        public int pergjegjes_id { get; set; }
+        public string klient_id { get; set; }
+        public string pergjegjes_id { get; set; }
         public Nullable<System.DateTime> data_Modifikimit { get; set; }
     
         public virtual ADRESA ADRESA { get; set; }
-        public virtual PERDORUE PERDORUE { get; set; }
-        public virtual PERDORUE PERDORUE1 { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<POROSI_ITEM> POROSI_ITEM { get; set; }
     }

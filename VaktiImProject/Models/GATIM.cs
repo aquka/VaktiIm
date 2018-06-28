@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Web;
-
+    
     public partial class GATIM
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,19 +28,14 @@ namespace VaktiImProject.Models
         public string foto { get; set; }
         public System.DateTime datakrijimit { get; set; }
         public Nullable<System.DateTime> datamodifikimit { get; set; }
-        public int createdBy { get; set; }
-        public Nullable<int> modifiedBy { get; set; }
+        public string createdBy { get; set; }
+        public string modifiedBy { get; set; }
         public int kategori_id { get; set; }
     
-        public virtual PERDORUE PERDORUE { get; set; }
-        public virtual PERDORUE PERDORUE1 { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
         public virtual KATEGORI KATEGORI { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<POROSI_ITEM> POROSI_ITEM { get; set; }
-
-        [DisplayName("Upload File")]
-        public HttpPostedFileBase ImageFile { get; set; }
-
-        public GATIM gatim { get; set; }
     }
 }

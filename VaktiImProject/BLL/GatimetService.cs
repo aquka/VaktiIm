@@ -4,14 +4,15 @@ using System.Linq;
 using System.Web;
 using VaktiImProject.Models;
 
+
 namespace VaktiImProject.BLL
 {
     public class GatimetService
     {
-        private readonly Vakti_ImEntities _db;
+        private readonly Vakti_Im_Entities _db;
         public GatimetService()
         {
-            _db = new Vakti_ImEntities();
+            _db = new Vakti_Im_Entities();
         }
         public List<GATIM> MerrListenEGatimeve()
         {

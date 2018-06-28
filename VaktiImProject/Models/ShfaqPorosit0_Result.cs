@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     
@@ -17,8 +17,8 @@ namespace VaktiImProject.Models
         public int adresa_id { get; set; }
         public System.DateTime datetime_Porosi { get; set; }
         public bool status_porosie { get; set; }
-        public int klient_id { get; set; }
-        public int pergjegjes_id { get; set; }
+        public string klient_id { get; set; }
+        public string pergjegjes_id { get; set; }
         public Nullable<System.DateTime> data_Modifikimit { get; set; }
     }
 }

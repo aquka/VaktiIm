@@ -1,0 +1,972 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Vakti_Im_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ContextKey" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="Model" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADRESA">
+          <Key>
+            <PropertyRef Name="adrese_id" />
+          </Key>
+          <Property Name="adrese_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rruga" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="pershkrimi" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GATIM">
+          <Key>
+            <PropertyRef Name="gatim_id" />
+          </Key>
+          <Property Name="gatim_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emriGatimit" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="pershkrimi" Type="text" Nullable="false" />
+          <Property Name="cmimi" Type="money" Nullable="false" />
+          <Property Name="disponueshmeria" Type="bit" Nullable="false" />
+          <Property Name="foto" Type="varchar" MaxLength="100" />
+          <Property Name="datakrijimit" Type="datetime" Nullable="false" />
+          <Property Name="datamodifikimit" Type="datetime" />
+          <Property Name="createdBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="modifiedBy" Type="nvarchar" MaxLength="128" />
+          <Property Name="kategori_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="kategori_id" />
+          </Key>
+          <Property Name="kategori_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="emri" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POROSI">
+          <Key>
+            <PropertyRef Name="porosi_id" />
+          </Key>
+          <Property Name="porosi_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="adresa_id" Type="int" Nullable="false" />
+          <Property Name="datetime_Porosi" Type="datetime" Nullable="false" />
+          <Property Name="status_porosie" Type="bit" Nullable="false" />
+          <Property Name="klient_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="pergjegjes_id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="data_Modifikimit" Type="datetime" />
+        </EntityType>
+        <EntityType Name="POROSI_ITEM">
+          <Key>
+            <PropertyRef Name="porosi_id" />
+            <PropertyRef Name="gatim_id" />
+          </Key>
+          <Property Name="porosi_id" Type="int" Nullable="false" />
+          <Property Name="sasia" Type="int" Nullable="false" />
+          <Property Name="gatim_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GATIM_fk0">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GATIM">
+              <PropertyRef Name="createdBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GATIM_fk1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GATIM">
+              <PropertyRef Name="modifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GATIM_fk2">
+          <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="1" />
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="kategori_id" />
+            </Principal>
+            <Dependent Role="GATIM">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_fk0">
+          <End Role="ADRESA" Type="Self.ADRESA" Multiplicity="1" />
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADRESA">
+              <PropertyRef Name="adrese_id" />
+            </Principal>
+            <Dependent Role="POROSI">
+              <PropertyRef Name="adresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_fk1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="POROSI">
+              <PropertyRef Name="klient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_fk2">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="POROSI">
+              <PropertyRef Name="pergjegjes_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_ITEM_fk0">
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="1" />
+          <End Role="POROSI_ITEM" Type="Self.POROSI_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POROSI">
+              <PropertyRef Name="porosi_id" />
+            </Principal>
+            <Dependent Role="POROSI_ITEM">
+              <PropertyRef Name="porosi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_ITEM_fk1">
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="1" />
+          <End Role="POROSI_ITEM" Type="Self.POROSI_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GATIM">
+              <PropertyRef Name="gatim_id" />
+            </Principal>
+            <Dependent Role="POROSI_ITEM">
+              <PropertyRef Name="gatim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Detaje_porosie" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GatimeAktive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Porosit_e_bera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Porosite_e_mia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="Procedure1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShfaqPorosi1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShfaqPorosit0" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="Vakti_Im_ModelStoreContainer">
+          <EntitySet Name="__MigrationHistory" EntityType="Self.__MigrationHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADRESA" EntityType="Self.ADRESA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GATIM" EntityType="Self.GATIM" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KATEGORI" EntityType="Self.KATEGORI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POROSI" EntityType="Self.POROSI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="POROSI_ITEM" EntityType="Self.POROSI_ITEM" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="GATIM_fk0" Association="Self.GATIM_fk0">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GATIM" EntitySet="GATIM" />
+          </AssociationSet>
+          <AssociationSet Name="GATIM_fk1" Association="Self.GATIM_fk1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GATIM" EntitySet="GATIM" />
+          </AssociationSet>
+          <AssociationSet Name="GATIM_fk2" Association="Self.GATIM_fk2">
+            <End Role="KATEGORI" EntitySet="KATEGORI" />
+            <End Role="GATIM" EntitySet="GATIM" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_fk0" Association="Self.POROSI_fk0">
+            <End Role="ADRESA" EntitySet="ADRESA" />
+            <End Role="POROSI" EntitySet="POROSI" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_fk1" Association="Self.POROSI_fk1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="POROSI" EntitySet="POROSI" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_fk2" Association="Self.POROSI_fk2">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="POROSI" EntitySet="POROSI" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_ITEM_fk0" Association="Self.POROSI_ITEM_fk0">
+            <End Role="POROSI" EntitySet="POROSI" />
+            <End Role="POROSI_ITEM" EntitySet="POROSI_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_ITEM_fk1" Association="Self.POROSI_ITEM_fk1">
+            <End Role="GATIM" EntitySet="GATIM" />
+            <End Role="POROSI_ITEM" EntitySet="POROSI_ITEM" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Vakti_Im_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__MigrationHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+            <PropertyRef Name="ContextKey" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContextKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Model" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADRESA">
+          <Key>
+            <PropertyRef Name="adrese_id" />
+          </Key>
+          <Property Name="adrese_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rruga" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pershkrimi" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="POROSIs" Relationship="Self.POROSI_fk0" FromRole="ADRESA" ToRole="POROSI" />
+        </EntityType>
+        <EntityType Name="AspNetRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="GATIMs" Relationship="Self.GATIM_fk0" FromRole="AspNetUsers" ToRole="GATIM" />
+          <NavigationProperty Name="GATIMs1" Relationship="Self.GATIM_fk1" FromRole="AspNetUsers" ToRole="GATIM" />
+          <NavigationProperty Name="POROSIs" Relationship="Self.POROSI_fk1" FromRole="AspNetUsers" ToRole="POROSI" />
+          <NavigationProperty Name="POROSIs1" Relationship="Self.POROSI_fk2" FromRole="AspNetUsers" ToRole="POROSI" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="GATIM">
+          <Key>
+            <PropertyRef Name="gatim_id" />
+          </Key>
+          <Property Name="gatim_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emriGatimit" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pershkrimi" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cmimi" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="disponueshmeria" Type="Boolean" Nullable="false" />
+          <Property Name="foto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="datakrijimit" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="datamodifikimit" Type="DateTime" Precision="3" />
+          <Property Name="createdBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="modifiedBy" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="kategori_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.GATIM_fk0" FromRole="GATIM" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.GATIM_fk1" FromRole="GATIM" ToRole="AspNetUsers" />
+          <NavigationProperty Name="KATEGORI" Relationship="Self.GATIM_fk2" FromRole="GATIM" ToRole="KATEGORI" />
+          <NavigationProperty Name="POROSI_ITEM" Relationship="Self.POROSI_ITEM_fk1" FromRole="GATIM" ToRole="POROSI_ITEM" />
+        </EntityType>
+        <EntityType Name="KATEGORI">
+          <Key>
+            <PropertyRef Name="kategori_id" />
+          </Key>
+          <Property Name="kategori_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="emri" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="GATIMs" Relationship="Self.GATIM_fk2" FromRole="KATEGORI" ToRole="GATIM" />
+        </EntityType>
+        <EntityType Name="POROSI">
+          <Key>
+            <PropertyRef Name="porosi_id" />
+          </Key>
+          <Property Name="porosi_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="adresa_id" Type="Int32" Nullable="false" />
+          <Property Name="datetime_Porosi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status_porosie" Type="Boolean" Nullable="false" />
+          <Property Name="klient_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="pergjegjes_id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="data_Modifikimit" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ADRESA" Relationship="Self.POROSI_fk0" FromRole="POROSI" ToRole="ADRESA" />
+          <NavigationProperty Name="AspNetUser" Relationship="Self.POROSI_fk1" FromRole="POROSI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser1" Relationship="Self.POROSI_fk2" FromRole="POROSI" ToRole="AspNetUsers" />
+          <NavigationProperty Name="POROSI_ITEM" Relationship="Self.POROSI_ITEM_fk0" FromRole="POROSI" ToRole="POROSI_ITEM" />
+        </EntityType>
+        <EntityType Name="POROSI_ITEM">
+          <Key>
+            <PropertyRef Name="porosi_id" />
+            <PropertyRef Name="gatim_id" />
+          </Key>
+          <Property Name="porosi_id" Type="Int32" Nullable="false" />
+          <Property Name="sasia" Type="Int32" Nullable="false" />
+          <Property Name="gatim_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="GATIM" Relationship="Self.POROSI_ITEM_fk1" FromRole="POROSI_ITEM" ToRole="GATIM" />
+          <NavigationProperty Name="POROSI" Relationship="Self.POROSI_ITEM_fk0" FromRole="POROSI_ITEM" ToRole="POROSI" />
+        </EntityType>
+        <Association Name="POROSI_fk0">
+          <End Role="ADRESA" Type="Self.ADRESA" Multiplicity="1" />
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADRESA">
+              <PropertyRef Name="adrese_id" />
+            </Principal>
+            <Dependent Role="POROSI">
+              <PropertyRef Name="adresa_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GATIM_fk0">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GATIM">
+              <PropertyRef Name="createdBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GATIM_fk1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GATIM">
+              <PropertyRef Name="modifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_fk1">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="POROSI">
+              <PropertyRef Name="klient_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_fk2">
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="POROSI">
+              <PropertyRef Name="pergjegjes_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="GATIM_fk2">
+          <End Role="KATEGORI" Type="Self.KATEGORI" Multiplicity="1" />
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KATEGORI">
+              <PropertyRef Name="kategori_id" />
+            </Principal>
+            <Dependent Role="GATIM">
+              <PropertyRef Name="kategori_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_ITEM_fk1">
+          <End Role="GATIM" Type="Self.GATIM" Multiplicity="1" />
+          <End Role="POROSI_ITEM" Type="Self.POROSI_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GATIM">
+              <PropertyRef Name="gatim_id" />
+            </Principal>
+            <Dependent Role="POROSI_ITEM">
+              <PropertyRef Name="gatim_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="POROSI_ITEM_fk0">
+          <End Role="POROSI" Type="Self.POROSI" Multiplicity="1" />
+          <End Role="POROSI_ITEM" Type="Self.POROSI_ITEM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POROSI">
+              <PropertyRef Name="porosi_id" />
+            </Principal>
+            <Dependent Role="POROSI_ITEM">
+              <PropertyRef Name="porosi_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="Vakti_Im_Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__MigrationHistory" EntityType="Self.C__MigrationHistory" />
+          <EntitySet Name="ADRESAs" EntityType="Self.ADRESA" />
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="GATIMs" EntityType="Self.GATIM" />
+          <EntitySet Name="KATEGORIs" EntityType="Self.KATEGORI" />
+          <EntitySet Name="POROSIs" EntityType="Self.POROSI" />
+          <EntitySet Name="POROSI_ITEM" EntityType="Self.POROSI_ITEM" />
+          <AssociationSet Name="POROSI_fk0" Association="Self.POROSI_fk0">
+            <End Role="ADRESA" EntitySet="ADRESAs" />
+            <End Role="POROSI" EntitySet="POROSIs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="GATIM_fk0" Association="Self.GATIM_fk0">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GATIM" EntitySet="GATIMs" />
+          </AssociationSet>
+          <AssociationSet Name="GATIM_fk1" Association="Self.GATIM_fk1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="GATIM" EntitySet="GATIMs" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_fk1" Association="Self.POROSI_fk1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="POROSI" EntitySet="POROSIs" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_fk2" Association="Self.POROSI_fk2">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="POROSI" EntitySet="POROSIs" />
+          </AssociationSet>
+          <AssociationSet Name="GATIM_fk2" Association="Self.GATIM_fk2">
+            <End Role="KATEGORI" EntitySet="KATEGORIs" />
+            <End Role="GATIM" EntitySet="GATIMs" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_ITEM_fk1" Association="Self.POROSI_ITEM_fk1">
+            <End Role="GATIM" EntitySet="GATIMs" />
+            <End Role="POROSI_ITEM" EntitySet="POROSI_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="POROSI_ITEM_fk0" Association="Self.POROSI_ITEM_fk0">
+            <End Role="POROSI" EntitySet="POROSIs" />
+            <End Role="POROSI_ITEM" EntitySet="POROSI_ITEM" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <FunctionImport Name="Detaje_porosie" ReturnType="Collection(Vakti_Im_Model.Detaje_porosie_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GatimeAktive" ReturnType="Collection(Vakti_Im_Model.GatimeAktive_Result)" />
+          <FunctionImport Name="Porosit_e_bera" ReturnType="Collection(Vakti_Im_Model.Porosit_e_bera_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Porosite_e_mia" ReturnType="Collection(Vakti_Im_Model.Porosite_e_mia_Result)">
+            <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Procedure1" ReturnType="Collection(Vakti_Im_Model.Procedure1_Result)" />
+          <FunctionImport Name="ShfaqPorosi1" ReturnType="Collection(Vakti_Im_Model.ShfaqPorosi1_Result)" />
+          <FunctionImport Name="ShfaqPorosit0" ReturnType="Collection(Vakti_Im_Model.ShfaqPorosit0_Result)" />
+        </EntityContainer>
+        <ComplexType Name="Detaje_porosie_Result">
+          <Property Type="String" Name="emriGatimit" Nullable="false" MaxLength="100" />
+          <Property Type="Decimal" Name="cmimi" Nullable="false" Precision="19" />
+          <Property Type="Int32" Name="sasia" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="GatimeAktive_Result">
+          <Property Type="Int32" Name="gatim_id" Nullable="false" />
+          <Property Type="String" Name="emriGatimit" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="pershkrimi" Nullable="false" MaxLength="Max" />
+          <Property Type="Decimal" Name="cmimi" Nullable="false" Precision="19" />
+          <Property Type="Boolean" Name="disponueshmeria" Nullable="false" />
+          <Property Type="String" Name="foto" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="datakrijimit" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="datamodifikimit" Nullable="true" Precision="23" />
+          <Property Type="String" Name="createdBy" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="modifiedBy" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="kategori_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Porosit_e_bera_Result">
+          <Property Type="String" Name="emriGatimit" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="sasia" Nullable="false" />
+          <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+          <Property Type="String" Name="pershkrimi" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="emailiKlientit" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+        </ComplexType>
+        <ComplexType Name="Porosite_e_mia_Result">
+          <Property Type="Int32" Name="porosi_id" Nullable="false" />
+          <Property Type="DateTime" Name="datetime_Porosi" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+          <Property Type="Decimal" Name="Vlera" Nullable="true" Precision="19" />
+        </ComplexType>
+        <ComplexType Name="Procedure1_Result">
+          <Property Type="String" Name="emriGatimit" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="sasia" Nullable="false" />
+          <Property Type="DateTime" Name="datetime_Porosi" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="adresa_id" Nullable="false" />
+          <Property Type="String" Name="klient_id" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="pergjegjes_id" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="porosi_id" Nullable="false" />
+          <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="ShfaqPorosi1_Result">
+          <Property Type="Int32" Name="porosi_id" Nullable="false" />
+          <Property Type="Int32" Name="adresa_id" Nullable="false" />
+          <Property Type="DateTime" Name="datetime_Porosi" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+          <Property Type="String" Name="klient_id" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="pergjegjes_id" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="data_Modifikimit" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="ShfaqPorosit0_Result">
+          <Property Type="Int32" Name="porosi_id" Nullable="false" />
+          <Property Type="Int32" Name="adresa_id" Nullable="false" />
+          <Property Type="DateTime" Name="datetime_Porosi" Nullable="false" Precision="23" />
+          <Property Type="Boolean" Name="status_porosie" Nullable="false" />
+          <Property Type="String" Name="klient_id" Nullable="false" MaxLength="128" />
+          <Property Type="String" Name="pergjegjes_id" Nullable="false" MaxLength="128" />
+          <Property Type="DateTime" Name="data_Modifikimit" Nullable="true" Precision="23" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Vakti_Im_ModelStoreContainer" CdmEntityContainer="Vakti_Im_Entities">
+          <EntitySetMapping Name="C__MigrationHistory">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.C__MigrationHistory">
+              <MappingFragment StoreEntitySet="__MigrationHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADRESAs">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.ADRESA">
+              <MappingFragment StoreEntitySet="ADRESA">
+                <ScalarProperty Name="adrese_id" ColumnName="adrese_id" />
+                <ScalarProperty Name="rruga" ColumnName="rruga" />
+                <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GATIMs">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.GATIM">
+              <MappingFragment StoreEntitySet="GATIM">
+                <ScalarProperty Name="gatim_id" ColumnName="gatim_id" />
+                <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+                <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+                <ScalarProperty Name="cmimi" ColumnName="cmimi" />
+                <ScalarProperty Name="disponueshmeria" ColumnName="disponueshmeria" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="datakrijimit" ColumnName="datakrijimit" />
+                <ScalarProperty Name="datamodifikimit" ColumnName="datamodifikimit" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KATEGORIs">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.KATEGORI">
+              <MappingFragment StoreEntitySet="KATEGORI">
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+                <ScalarProperty Name="emri" ColumnName="emri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POROSIs">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.POROSI">
+              <MappingFragment StoreEntitySet="POROSI">
+                <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+                <ScalarProperty Name="adresa_id" ColumnName="adresa_id" />
+                <ScalarProperty Name="datetime_Porosi" ColumnName="datetime_Porosi" />
+                <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+                <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+                <ScalarProperty Name="pergjegjes_id" ColumnName="pergjegjes_id" />
+                <ScalarProperty Name="data_Modifikimit" ColumnName="data_Modifikimit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POROSI_ITEM">
+            <EntityTypeMapping TypeName="Vakti_Im_Model.POROSI_ITEM">
+              <MappingFragment StoreEntitySet="POROSI_ITEM">
+                <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+                <ScalarProperty Name="sasia" ColumnName="sasia" />
+                <ScalarProperty Name="gatim_id" ColumnName="gatim_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Vakti_Im_Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="Detaje_porosie" FunctionName="Vakti_Im_Model.Store.Detaje_porosie">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Vakti_Im_Model.Detaje_porosie_Result">
+                <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+                <ScalarProperty Name="cmimi" ColumnName="cmimi" />
+                <ScalarProperty Name="sasia" ColumnName="sasia" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GatimeAktive" FunctionName="Vakti_Im_Model.Store.GatimeAktive">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Vakti_Im_Model.GatimeAktive_Result">
+                <ScalarProperty Name="gatim_id" ColumnName="gatim_id" />
+                <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+                <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+                <ScalarProperty Name="cmimi" ColumnName="cmimi" />
+                <ScalarProperty Name="disponueshmeria" ColumnName="disponueshmeria" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="datakrijimit" ColumnName="datakrijimit" />
+                <ScalarProperty Name="datamodifikimit" ColumnName="datamodifikimit" />
+                <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+                <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+                <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Porosit_e_bera" FunctionName="Vakti_Im_Model.Store.Porosit_e_bera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Vakti_Im_Model.Porosit_e_bera_Result">
+                <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+                <ScalarProperty Name="sasia" ColumnName="sasia" />
+                <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+                <ScalarProperty Name="pershkrimi" ColumnName="pershkrimi" />
+                <ScalarProperty Name="emailiKlientit" ColumnName="emailiKlientit" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Porosite_e_mia" FunctionName="Vakti_Im_Model.Store.Porosite_e_mia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Vakti_Im_Model.Porosite_e_mia_Result">
+                <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+                <ScalarProperty Name="datetime_Porosi" ColumnName="datetime_Porosi" />
+                <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+                <ScalarProperty Name="Vlera" ColumnName="Vlera" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Procedure1" FunctionName="Vakti_Im_Model.Store.Procedure1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Vakti_Im_Model.Procedure1_Result">
+                <ScalarProperty Name="emriGatimit" ColumnName="emriGatimit" />
+                <ScalarProperty Name="sasia" ColumnName="sasia" />
+                <ScalarProperty Name="datetime_Porosi" ColumnName="datetime_Porosi" />
+                <ScalarProperty Name="adresa_id" ColumnName="adresa_id" />
+                <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+                <ScalarProperty Name="pergjegjes_id" ColumnName="pergjegjes_id" />
+                <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+                <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShfaqPorosi1" FunctionName="Vakti_Im_Model.Store.ShfaqPorosi1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Vakti_Im_Model.ShfaqPorosi1_Result">
+                <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+                <ScalarProperty Name="adresa_id" ColumnName="adresa_id" />
+                <ScalarProperty Name="datetime_Porosi" ColumnName="datetime_Porosi" />
+                <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+                <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+                <ScalarProperty Name="pergjegjes_id" ColumnName="pergjegjes_id" />
+                <ScalarProperty Name="data_Modifikimit" ColumnName="data_Modifikimit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="ShfaqPorosit0" FunctionName="Vakti_Im_Model.Store.ShfaqPorosit0">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Vakti_Im_Model.ShfaqPorosit0_Result">
+                <ScalarProperty Name="porosi_id" ColumnName="porosi_id" />
+                <ScalarProperty Name="adresa_id" ColumnName="adresa_id" />
+                <ScalarProperty Name="datetime_Porosi" ColumnName="datetime_Porosi" />
+                <ScalarProperty Name="status_porosie" ColumnName="status_porosie" />
+                <ScalarProperty Name="klient_id" ColumnName="klient_id" />
+                <ScalarProperty Name="pergjegjes_id" ColumnName="pergjegjes_id" />
+                <ScalarProperty Name="data_Modifikimit" ColumnName="data_Modifikimit" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

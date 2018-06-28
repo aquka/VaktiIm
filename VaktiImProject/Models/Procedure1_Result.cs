@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     
     public partial class Procedure1_Result
     {
+        public string emriGatimit { get; set; }
         public int sasia { get; set; }
         public System.DateTime datetime_Porosi { get; set; }
         public int adresa_id { get; set; }
-        public int klient_id { get; set; }
-        public int pergjegjes_id { get; set; }
+        public string klient_id { get; set; }
+        public string pergjegjes_id { get; set; }
         public int porosi_id { get; set; }
         public bool status_porosie { get; set; }
-        public string emriGatimit { get; set; }
     }
 }

@@ -7,22 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VaktiImProject.Models
+namespace VaktiImProject
 {
     using System;
     
     public partial class GatimeAktive_Result
     {
         public int gatim_id { get; set; }
-        public string emri { get; set; }
+        public string emriGatimit { get; set; }
         public string pershkrimi { get; set; }
         public decimal cmimi { get; set; }
         public bool disponueshmeria { get; set; }
         public string foto { get; set; }
         public System.DateTime datakrijimit { get; set; }
         public Nullable<System.DateTime> datamodifikimit { get; set; }
-        public int createdBy { get; set; }
-        public Nullable<int> modifiedBy { get; set; }
+        public string createdBy { get; set; }
+        public string modifiedBy { get; set; }
         public int kategori_id { get; set; }
     }
 }
